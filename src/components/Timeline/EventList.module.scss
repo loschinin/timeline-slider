@@ -1,27 +1,21 @@
 .eventListContainer {
   width: 100%;
-  overflow-x: scroll;
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-}
-
-.eventListContainer::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, and Opera */
+  overflow-x: hidden;
 }
 
 .eventList {
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap;
   gap: 20px;
   padding: 20px 0;
 }
 
 .eventItem {
-  flex: 0 0 200px;
+  flex: 0 0 300px;
   padding: 20px;
   border: 1px solid #eee;
   border-radius: 5px;
+  background-color: white;
 
   h3 {
     font-size: 24px;
@@ -37,4 +31,10 @@
   text-align: center;
   color: #999;
   padding: 40px 0;
+}
+
+@media (max-width: 320px) {
+  .eventItem {
+    flex: 0 0 280px;
+  }
 }
