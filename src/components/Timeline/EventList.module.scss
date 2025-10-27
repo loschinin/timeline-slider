@@ -7,23 +7,28 @@
   display: flex;
   flex-direction: row;
   gap: 20px;
-  padding: 20px 0;
 }
 
 .eventItem {
-  flex: 0 0 300px;
+  display: flex;
+  flex-direction: column;
+  min-height: 135px;
+  gap: 15px;
+  flex: 0 0 350px;
   padding: 20px;
   border: 1px solid #eee;
   border-radius: 5px;
-  background-color: white;
 
-  h3 {
-    font-size: 24px;
-    margin-bottom: 10px;
+  span {
+    font-size: 25px;
+    font-family: var(--font-bebas-neue), serif;
+    color: #3877ee;
+    line-height: 120%;
   }
 
   p {
-    font-size: 16px;
+    font-size: 20px;
+    line-height: 30px;
   }
 }
 

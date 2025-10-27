@@ -7,8 +7,8 @@ interface CircleProps {
 }
 
 const Circle = ({ totalPages, currentPage, onPeriodSelect }: CircleProps) => {
-  const radius = 220;
-  const center = 240;
+  const center = 530 / 2; // The center is half the container's width
+  const radius = center; // Position dots on the circumference
 
   const getAngle = (index: number) => {
     return (index / totalPages) * 360;
@@ -22,14 +22,14 @@ const Circle = ({ totalPages, currentPage, onPeriodSelect }: CircleProps) => {
       >
         {Array.from({ length: totalPages }, (_, i) => {
           const angle = getAngle(i);
-          const dotSize = 40; // As defined in the CSS
+          const dotSize = 56; // As defined in the CSS
           const x =
             center +
-            radius * Math.cos((angle - 90) * (Math.PI / 180)) -
+            radius * Math.cos((angle - 60) * (Math.PI / 180)) -
             dotSize / 2;
           const y =
             center +
-            radius * Math.sin((angle - 90) * (Math.PI / 180)) -
+            radius * Math.sin((angle - 60) * (Math.PI / 180)) -
             dotSize / 2;
 
           return (
@@ -39,7 +39,13 @@ const Circle = ({ totalPages, currentPage, onPeriodSelect }: CircleProps) => {
               style={{ left: `${x}px`, top: `${y}px` }}
               onClick={() => onPeriodSelect(i + 1)}
             >
-              <span>{i + 1}</span>
+              <span
+                style={{
+                  transform: `rotate(${getAngle(currentPage - 1)}deg)`,
+                }}
+              >
+                {i + 1}
+              </span>
             </div>
           );
         })}

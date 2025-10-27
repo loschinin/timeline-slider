@@ -1,23 +1,17 @@
-import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore from 'swiper';
-import { Pagination } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/pagination';
 import styles from './Timeline.module.scss';
 import { useEventsContext } from '@/contexts/EventsContext';
 import Circle from './Circle';
 import PeriodSlide from './PeriodSlide';
 import { useEvents } from '@/hooks/useEvents';
-import { SliderButtons } from './SliderButtons';
 import { useFlipbookAnimation } from '@/hooks/useFlipbookAnimation';
 import { useState, useRef, useEffect } from 'react';
+import CustomSwiper from './CustomSwiper'; // Import the new CustomSwiper component
 
 const limit = 6; // Number of years per period
 
 const Timeline = () => {
   const [page, setPage] = useState(1);
   const { eventsData } = useEventsContext();
-  const swiperRef = useRef<SwiperCore | null>(null);
 
   const { data: initialData } = useEvents(1, limit);
   const currentData = eventsData[page];
@@ -25,12 +19,7 @@ const Timeline = () => {
   const startYear = useFlipbookAnimation(currentData?.startYear);
   const endYear = useFlipbookAnimation(currentData?.endYear);
 
-  useEffect(() => {
-    if (swiperRef.current) {
-      swiperRef.current.slideTo(page - 1);
-    }
-  }, [page]);
-
+  // These functions are now passed to CustomSwiper
   const handlePeriodSelect = (periodNum: number) => {
     setPage(periodNum);
   };
@@ -95,42 +84,15 @@ const Timeline = () => {
         </div>
       </div>
 
-      <Swiper
-        modules={[Pagination]}
-        pagination={{ clickable: true }}
-        className={styles.swiperContainer}
-        onSwiper={(swiper) => (swiperRef.current = swiper)}
-        onSlideChange={(swiper) => setPage(swiper.activeIndex + 1)}
-        initialSlide={page - 1}
-        breakpoints={{
-          320: {
-            pagination: {
-              enabled: true,
-            },
-          },
-          768: {
-            pagination: {
-              enabled: false,
-            },
-          },
-        }}
-      >
-        <SliderButtons />
-        {initialData &&
-          Array.from({ length: initialData.totalPages }, (_, i) => (
-            <SwiperSlide key={i}>
-              <PeriodSlide
-                page={i + 1}
-                limit={limit}
-                isActive={
-                  i + 1 === page || i + 1 === page - 1 || i + 1 === page + 1
-                }
-              />
-            </SwiperSlide>
-          ))}
-      </Swiper>
+      <CustomSwiper
+        initialData={initialData}
+        page={page}
+        setPage={setPage}
+        limit={limit}
+      />
     </div>
   );
 };
 
 export default Timeline;
+

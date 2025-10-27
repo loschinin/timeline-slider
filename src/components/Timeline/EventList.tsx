@@ -15,7 +15,7 @@ const EventList = ({ events }: EventListProps) => {
       <div className={styles.eventList}>
         {events.map((event) => (
           <div key={event.id} className={styles.eventItem}>
-            <h3>{new Date(event.date).getFullYear()}</h3>
+            <span>{new Date(event.date).getFullYear()}</span>
             <p>{event.description}</p>
           </div>
         ))}
