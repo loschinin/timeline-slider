@@ -46,29 +46,6 @@
     1;
 }
 
-.yearsContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  // margin-top: 96px;
-  z-index: 1;
-}
-
-.startYear {
-  font-size: 200px;
-  color: #3877ee; // Iris 100
-  line-height: 160px;
-  padding: 0 20px;
-}
-
-.endYear {
-  font-size: 200px;
-  color: #ef5da8; // Fuschia 100
-  line-height: 160px;
-  padding: 0 20px;
-}
-
 .divider {
   display: none;
 }
@@ -92,23 +69,7 @@
     border-left: none;
   }
 
-  .startYear,
-  .endYear {
-    font-size: 56px;
-  }
-
-  .startYear {
-    color: #3877ee;
-  }
-
   .divider {
     display: block;
-  }
-}
-
-@media (min-width: g.$breakpoint-mobile) and (max-width: g.$breakpoint-tablet) {
-  .startYear,
-  .endYear {
-    font-size: 80px;
   }
 }

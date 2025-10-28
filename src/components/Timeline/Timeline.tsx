@@ -1,12 +1,12 @@
 import { useEvents } from '@/hooks/useEvents';
-import { useFlipbookAnimation } from '@/hooks/useFlipbookAnimation';
+import { EventsResponse } from '@/services/events';
 import { useState } from 'react';
+import BulletPagination from './BulletPagination/BulletPagination';
 import CirclePagination from './CirclePagination/CirclePagination';
 import CustomSwiper from './CustomSwiper/CustomSwiper'; // Import the new CustomSwiper component
-import styles from './Timeline.module.scss';
 import PeriodNavigation from './PeriodNavigation/PeriodNavigation';
-import BulletPagination from './BulletPagination/BulletPagination';
-import { EventsResponse } from '@/services/events';
+import styles from './Timeline.module.scss';
+import YearsContainer from './YearsContainer/YearsContainer';
 
 const limit = 6; // Number of years per period
 
@@ -21,9 +21,6 @@ const Timeline = () => {
 
   const { data: initialData } = useEvents(1, limit);
   const currentData = eventsData[page];
-
-  const startYear = useFlipbookAnimation(currentData?.startYear);
-  const endYear = useFlipbookAnimation(currentData?.endYear);
 
   const handlePeriodSelect = (periodNum: number) => {
     setPage(periodNum);
@@ -42,10 +39,10 @@ const Timeline = () => {
   return (
     <div className={styles.timelineContainer}>
       <h1 className={styles.title}>Исторические даты</h1>
-      <div className={styles.yearsContainer}>
-        <h2 className={styles.startYear}>{startYear}</h2>
-        <h2 className={styles.endYear}>{endYear}</h2>
-      </div>
+      <YearsContainer
+        currentStartYear={currentData?.startYear}
+        currentEndYear={currentData?.endYear}
+      />
       {initialData && (
         <CirclePagination
           totalPages={initialData.totalPages}
