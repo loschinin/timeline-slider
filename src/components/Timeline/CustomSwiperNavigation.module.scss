@@ -5,6 +5,10 @@
   position: relative;
   overflow: visible; // Allow elements to extend beyond the container
   align-items: center;
+
+  :global(.swiper-button-disabled) {
+    display: none;
+  }
 }
 
 .customSwiperButtonPrev,

@@ -51,8 +51,6 @@ const CustomSwiper = ({
         prevEl: prevRef.current,
         nextEl: nextRef.current,
       }}
-      onReachBeginning={() => console.log('ReachBeginning')}
-      onReachEnd={() => console.log('ReachEnd')}
       breakpoints={{
         320: {
           slidesPerView: 2,
