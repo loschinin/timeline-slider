@@ -6,9 +6,12 @@ interface CirclePaginationProps {
   onPeriodSelect: (page: number) => void;
 }
 
-const CirclePagination = ({ totalPages, currentPage, onPeriodSelect }: CirclePaginationProps) => {
-  const center = 530 / 2; // The center is half the container's width
-  const radius = center; // Position dots on the circumference
+const CirclePagination = ({
+  totalPages,
+  currentPage,
+  onPeriodSelect,
+}: CirclePaginationProps) => {
+  const radius = 530 / 2; // The center is half the container's width
 
   const getAngle = (index: number) => {
     return (index / totalPages) * 360;
@@ -24,11 +27,11 @@ const CirclePagination = ({ totalPages, currentPage, onPeriodSelect }: CirclePag
           const angle = getAngle(i);
           const dotSize = 56; // As defined in the CSS
           const x =
-            center +
+            radius +
             radius * Math.cos((angle - 60) * (Math.PI / 180)) -
             dotSize / 2;
           const y =
-            center +
+            radius +
             radius * Math.sin((angle - 60) * (Math.PI / 180)) -
             dotSize / 2;
 
