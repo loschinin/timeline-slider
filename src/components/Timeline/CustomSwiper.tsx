@@ -1,13 +1,17 @@
 import { EventsResponse } from '@/services/events';
 import { useEffect, useRef } from 'react';
-import SwiperCore from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { Navigation, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import navStyles from './CustomSwiperNavigation.module.scss';
-import PeriodSlide from './PeriodSlide';
+import styles from './CustomSwiperNavigation.module.scss';
+import { EffectFade } from 'swiper/modules';
+
+import 'swiper/css/effect-fade';
+import { useEventsContext } from '@/contexts/EventsContext';
+import { useEvents } from '@/hooks/useEvents';
+import CustomPagination from './CustomPagination/CustomPagination';
 
 interface CustomSwiperProps {
   page: number;
@@ -22,55 +26,65 @@ const CustomSwiper = ({
   setPage,
   limit,
 }: CustomSwiperProps) => {
-  const swiperRef = useRef<SwiperCore | null>(null);
   const prevRef = useRef<HTMLDivElement>(null);
   const nextRef = useRef<HTMLDivElement>(null);
 
+  const { data } = useEvents(page, limit, true);
+  const { setEventsData } = useEventsContext();
+
   useEffect(() => {
-    if (swiperRef.current) {
-      swiperRef.current.slideTo(page - 1);
+    if (data) {
+      setEventsData(page, data);
     }
-  }, [page]);
+  }, [data, page]);
+
+  const handlePageChange = (periodNum: number) => {
+    setPage(periodNum);
+  };
 
   return (
     <Swiper
-      modules={[Pagination, Navigation]}
-      pagination={{ clickable: true }}
+      className={styles.swiperContainer}
+      modules={[Pagination, Navigation, EffectFade]}
       navigation={{
         enabled: true,
         prevEl: prevRef.current,
         nextEl: nextRef.current,
       }}
-      className={navStyles.swiperContainer}
-      onSlideChange={(swiper) => setPage(swiper.activeIndex + 1)}
-      initialSlide={page - 1}
+      onReachBeginning={() => console.log('ReachBeginning')}
+      onReachEnd={() => console.log('ReachEnd')}
       breakpoints={{
         320: {
-          pagination: {
-            enabled: true,
+          slidesPerView: 2,
+          navigation: {
+            enabled: false,
           },
         },
         1024: {
-          pagination: {
-            enabled: false,
+          slidesPerView: 3,
+          navigation: {
+            enabled: true,
           },
         },
       }}
     >
-      <div ref={prevRef} className={navStyles.customSwiperButtonPrev} />
-      <div ref={nextRef} className={navStyles.customSwiperButtonNext} />
-      {initialData &&
-        Array.from({ length: initialData.totalPages }, (_, i) => (
-          <SwiperSlide key={i}>
-            <PeriodSlide
-              page={i + 1}
-              limit={limit}
-              isActive={
-                i + 1 === page || i + 1 === page - 1 || i + 1 === page + 1
-              }
-            />
-          </SwiperSlide>
-        ))}
+      <div ref={prevRef} className={styles.customSwiperButtonPrev} />
+      <div ref={nextRef} className={styles.customSwiperButtonNext} />
+
+      {data?.events.map((event, i) => (
+        <SwiperSlide key={i}>
+          <div key={event.id} className={styles.eventItem}>
+            <span>{new Date(event.date).getFullYear()}</span>
+            <p>{event.description}</p>
+          </div>
+        </SwiperSlide>
+      ))}
+
+      <CustomPagination
+        totalPages={initialData?.totalPages || 0}
+        currentPage={page}
+        onPageChange={handlePageChange}
+      />
     </Swiper>
   );
 };

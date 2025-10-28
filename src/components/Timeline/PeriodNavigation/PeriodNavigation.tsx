@@ -20,7 +20,9 @@ const PeriodNavigation: React.FC<PeriodNavigationProps> = ({
 }) => {
   return (
     <div className={styles.periodNavContainer}>
-      {page} / {totalPages}
+      <div className={styles.periodFraction}>
+        {page} / {totalPages}
+      </div>
       <div className={styles.periodNavButtons}>
         <button
           onClick={onPrevPage}

@@ -1,8 +1,14 @@
+@use '@/styles/_mixins.scss' as g;
+
 .periodNavContainer {
   padding-left: 78px;
   display: flex;
   flex-direction: column;
   gap: 10px;
+
+  .periodFraction {
+    font-size: 14px;
+  }
 }
 
 .periodNavButtons {
@@ -22,4 +28,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@media (max-width: g.$breakpoint-tablet) {
+  .periodNavContainer {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    padding-left: 0;
+  }
 }
