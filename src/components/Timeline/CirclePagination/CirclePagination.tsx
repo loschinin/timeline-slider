@@ -3,13 +3,13 @@ import styles from './CirclePagination.module.scss';
 interface CirclePaginationProps {
   totalPages: number;
   currentPage: number;
-  onPeriodSelect: (page: number) => void;
+  onPageChange: (page: number) => void;
 }
 
 const CirclePagination = ({
   totalPages,
   currentPage,
-  onPeriodSelect,
+  onPageChange,
 }: CirclePaginationProps) => {
   const radius = 530 / 2; // The center is half the container's width
 
@@ -40,7 +40,7 @@ const CirclePagination = ({
               key={i}
               className={`${styles.dot} ${currentPage === i + 1 ? styles.activeDot : ''}`}
               style={{ left: `${x}px`, top: `${y}px` }}
-              onClick={() => onPeriodSelect(i + 1)}
+              onClick={() => onPageChange(i + 1)}
             >
               <span
                 style={{

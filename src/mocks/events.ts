@@ -1,11 +1,11 @@
-export interface Event {
+export interface IEvent {
   id: number;
   date: string;
   description: string;
   categoryId: number;
 }
 
-export const allEvents: Event[] = [
+export const allEvents: IEvent[] = [
   // 1981-1986: Технологии (categoryId: 1)
   {
     id: 1,

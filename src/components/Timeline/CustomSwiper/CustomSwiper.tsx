@@ -21,7 +21,7 @@ const CustomSwiper = ({ page, limit, setEventsData }: CustomSwiperProps) => {
   const prevRef = useRef<HTMLDivElement>(null);
   const nextRef = useRef<HTMLDivElement>(null);
 
-  const { data } = useEvents(page, limit, true);
+  const { data } = useEvents(page, limit);
 
   useEffect(() => {
     if (data) {
@@ -45,6 +45,12 @@ const CustomSwiper = ({ page, limit, setEventsData }: CustomSwiperProps) => {
       }}
       breakpoints={{
         320: {
+          slidesPerView: 1,
+          navigation: {
+            enabled: false,
+          },
+        },
+        430: {
           slidesPerView: 2,
           navigation: {
             enabled: false,

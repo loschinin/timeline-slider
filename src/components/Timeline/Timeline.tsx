@@ -1,11 +1,12 @@
 import { useEvents } from '@/hooks/useEvents';
-import { EventsResponse } from '@/services/events';
+import { useFlipbookAnimation } from '@/hooks/useFlipbookAnimation';
 import { useState } from 'react';
-import BulletPagination from './BulletPagination/BulletPagination';
 import CirclePagination from './CirclePagination/CirclePagination';
 import CustomSwiper from './CustomSwiper/CustomSwiper'; // Import the new CustomSwiper component
-import PeriodNavigation from './PeriodNavigation/PeriodNavigation';
 import styles from './Timeline.module.scss';
+import PeriodNavigation from './PeriodNavigation/PeriodNavigation';
+import BulletPagination from './BulletPagination/BulletPagination';
+import { EventsResponse } from '@/services/events';
 import YearsContainer from './YearsContainer/YearsContainer';
 
 const limit = 6; // Number of years per period
@@ -21,10 +22,6 @@ const Timeline = () => {
 
   const { data: initialData } = useEvents(1, limit);
   const currentData = eventsData[page];
-
-  const handlePeriodSelect = (periodNum: number) => {
-    setPage(periodNum);
-  };
 
   const handlePrevPage = () => {
     setPage((prevPage) => Math.max(prevPage - 1, 1));
@@ -47,7 +44,7 @@ const Timeline = () => {
         <CirclePagination
           totalPages={initialData.totalPages}
           currentPage={page}
-          onPeriodSelect={handlePeriodSelect}
+          onPageChange={setPage}
         />
       )}
       <hr className={styles.divider} />
