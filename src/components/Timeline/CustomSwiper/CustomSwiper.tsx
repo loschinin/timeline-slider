@@ -5,14 +5,14 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { Navigation, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import styles from './CustomSwiperNavigation.module.scss';
+import styles from './CustomSwiper.module.scss';
 import { EffectFade } from 'swiper/modules';
 import { gsap } from 'gsap';
 
 import 'swiper/css/effect-fade';
 import { useEventsContext } from '@/contexts/EventsContext';
 import { useEvents } from '@/hooks/useEvents';
-import CustomPagination from './CustomPagination/CustomPagination';
+import CustomPagination from '../CustomPagination/CustomPagination';
 
 interface CustomSwiperProps {
   page: number;

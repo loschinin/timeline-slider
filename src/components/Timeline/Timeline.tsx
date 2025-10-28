@@ -3,7 +3,7 @@ import { useEvents } from '@/hooks/useEvents';
 import { useFlipbookAnimation } from '@/hooks/useFlipbookAnimation';
 import { useState } from 'react';
 import Circle from './Circle';
-import CustomSwiper from './CustomSwiper'; // Import the new CustomSwiper component
+import CustomSwiper from './CustomSwiper/CustomSwiper'; // Import the new CustomSwiper component
 import styles from './Timeline.module.scss';
 import PeriodNavigation from './PeriodNavigation/PeriodNavigation';
 
