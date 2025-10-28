@@ -1,12 +1,12 @@
-import styles from './Timeline.module.scss';
+import styles from './CirclePagination.module.scss';
 
-interface CircleProps {
+interface CirclePaginationProps {
   totalPages: number;
   currentPage: number;
   onPeriodSelect: (page: number) => void;
 }
 
-const Circle = ({ totalPages, currentPage, onPeriodSelect }: CircleProps) => {
+const CirclePagination = ({ totalPages, currentPage, onPeriodSelect }: CirclePaginationProps) => {
   const center = 530 / 2; // The center is half the container's width
   const radius = center; // Position dots on the circumference
 
@@ -54,4 +54,4 @@ const Circle = ({ totalPages, currentPage, onPeriodSelect }: CircleProps) => {
   );
 };
 
-export default Circle;
+export default CirclePagination;

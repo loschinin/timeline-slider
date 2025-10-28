@@ -2,7 +2,7 @@ import { useEventsContext } from '@/contexts/EventsContext';
 import { useEvents } from '@/hooks/useEvents';
 import { useFlipbookAnimation } from '@/hooks/useFlipbookAnimation';
 import { useState } from 'react';
-import Circle from './Circle';
+import CirclePagination from './CirclePagination/CirclePagination';
 import CustomSwiper from './CustomSwiper/CustomSwiper'; // Import the new CustomSwiper component
 import styles from './Timeline.module.scss';
 import PeriodNavigation from './PeriodNavigation/PeriodNavigation';
@@ -41,7 +41,7 @@ const Timeline = () => {
         <h2 className={styles.endYear}>{endYear}</h2>
       </div>
       {initialData && (
-        <Circle
+        <CirclePagination
           totalPages={initialData.totalPages}
           currentPage={page}
           onPeriodSelect={handlePeriodSelect}
