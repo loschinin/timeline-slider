@@ -1,3 +1,5 @@
+@use '../../styles/_mixins.scss' as g;
+
 .eventListContainer {
   width: 100%;
   overflow-x: hidden;
@@ -38,8 +40,15 @@
   padding: 40px 0;
 }
 
-@media (max-width: 320px) {
+@media (max-width: g.$breakpoint-mobile) {
   .eventItem {
+    max-width: 166px;
     flex: 0 0 280px;
+    span {
+      font-size: 16px;
+    }
+    p {
+      font-size: 14px;
+    }
   }
 }

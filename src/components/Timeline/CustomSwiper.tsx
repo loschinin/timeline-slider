@@ -41,15 +41,6 @@ const CustomSwiper = ({
         prevEl: prevRef.current,
         nextEl: nextRef.current,
       }}
-      onBeforeInit={(swiper) => {
-        if (typeof swiper.params.navigation !== 'boolean') {
-          const navigation = swiper.params.navigation;
-          if (navigation) {
-            navigation.prevEl = prevRef.current;
-            navigation.nextEl = nextRef.current;
-          }
-        }
-      }}
       className={navStyles.swiperContainer}
       onSlideChange={(swiper) => setPage(swiper.activeIndex + 1)}
       initialSlide={page - 1}
@@ -59,7 +50,7 @@ const CustomSwiper = ({
             enabled: true,
           },
         },
-        768: {
+        1024: {
           pagination: {
             enabled: false,
           },

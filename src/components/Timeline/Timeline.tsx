@@ -1,11 +1,10 @@
-import styles from './Timeline.module.scss';
 import { useEventsContext } from '@/contexts/EventsContext';
-import Circle from './Circle';
-import PeriodSlide from './PeriodSlide';
 import { useEvents } from '@/hooks/useEvents';
 import { useFlipbookAnimation } from '@/hooks/useFlipbookAnimation';
-import { useState, useRef, useEffect } from 'react';
+import { useState } from 'react';
+import Circle from './Circle';
 import CustomSwiper from './CustomSwiper'; // Import the new CustomSwiper component
+import styles from './Timeline.module.scss';
 
 const limit = 6; // Number of years per period
 
@@ -48,6 +47,7 @@ const Timeline = () => {
           onPeriodSelect={handlePeriodSelect}
         />
       )}
+      <hr className={styles.divider} />
       <div className={styles.periodNavContainer}>
         {page} / {initialData?.totalPages}
         <div className={styles.periodNavButtons}>
@@ -95,4 +95,3 @@ const Timeline = () => {
 };
 
 export default Timeline;
-
