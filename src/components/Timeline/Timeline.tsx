@@ -1,4 +1,3 @@
-import { useEventsContext } from '@/contexts/EventsContext';
 import { useEvents } from '@/hooks/useEvents';
 import { useFlipbookAnimation } from '@/hooks/useFlipbookAnimation';
 import { useState } from 'react';
@@ -6,12 +5,19 @@ import CirclePagination from './CirclePagination/CirclePagination';
 import CustomSwiper from './CustomSwiper/CustomSwiper'; // Import the new CustomSwiper component
 import styles from './Timeline.module.scss';
 import PeriodNavigation from './PeriodNavigation/PeriodNavigation';
+import BulletPagination from './BulletPagination/BulletPagination';
+import { EventsResponse } from '@/services/events';
 
 const limit = 6; // Number of years per period
 
 const Timeline = () => {
   const [page, setPage] = useState(1);
-  const { eventsData } = useEventsContext();
+  const [eventsData, setEventsData] = useState<Record<number, EventsResponse>>(
+    {},
+  );
+  const handleSetEventsData = (page: number, data: EventsResponse) => {
+    setEventsData((prevData) => ({ ...prevData, [page]: data }));
+  };
 
   const { data: initialData } = useEvents(1, limit);
   const currentData = eventsData[page];
@@ -56,12 +62,15 @@ const Timeline = () => {
         isPrevDisabled={page === 1}
         isNextDisabled={!initialData || page === initialData.totalPages}
       />
-
       <CustomSwiper
-        initialData={initialData}
         page={page}
-        setPage={setPage}
         limit={limit}
+        setEventsData={handleSetEventsData}
+      />
+      <BulletPagination
+        totalPages={initialData?.totalPages || 0}
+        currentPage={page}
+        onPageChange={setPage}
       />
     </div>
   );

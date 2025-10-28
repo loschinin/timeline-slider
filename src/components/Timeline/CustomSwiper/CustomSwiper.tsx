@@ -1,37 +1,27 @@
-import { EventsResponse } from '@/services/events';
+import { gsap } from 'gsap';
 import { useEffect, useRef } from 'react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import { Navigation, Pagination } from 'swiper/modules';
+import { EffectFade, Navigation, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import styles from './CustomSwiper.module.scss';
-import { EffectFade } from 'swiper/modules';
-import { gsap } from 'gsap';
 
-import 'swiper/css/effect-fade';
-import { useEventsContext } from '@/contexts/EventsContext';
 import { useEvents } from '@/hooks/useEvents';
-import BulletPagination from '../BulletPagination/BulletPagination';
+import { EventsResponse } from '@/services/events';
+import 'swiper/css/effect-fade';
 
 interface CustomSwiperProps {
   page: number;
-  setPage: (page: number) => void;
-  limit: number; // limit is used by PeriodSlide
-  initialData?: EventsResponse;
+  limit: number;
+  setEventsData(page: number, eventsResponse: EventsResponse): void;
 }
 
-const CustomSwiper = ({
-  initialData,
-  page,
-  setPage,
-  limit,
-}: CustomSwiperProps) => {
+const CustomSwiper = ({ page, limit, setEventsData }: CustomSwiperProps) => {
   const prevRef = useRef<HTMLDivElement>(null);
   const nextRef = useRef<HTMLDivElement>(null);
 
   const { data } = useEvents(page, limit, true);
-  const { setEventsData } = useEventsContext();
 
   useEffect(() => {
     if (data) {
@@ -43,10 +33,6 @@ const CustomSwiper = ({
       );
     }
   }, [data, page]);
-
-  const handlePageChange = (periodNum: number) => {
-    setPage(periodNum);
-  };
 
   return (
     <Swiper
@@ -83,12 +69,6 @@ const CustomSwiper = ({
           </div>
         </SwiperSlide>
       ))}
-
-      <BulletPagination
-        totalPages={initialData?.totalPages || 0}
-        currentPage={page}
-        onPageChange={handlePageChange}
-      />
     </Swiper>
   );
 };
