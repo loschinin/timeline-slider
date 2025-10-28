@@ -7,6 +7,7 @@ import { Navigation, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import styles from './CustomSwiperNavigation.module.scss';
 import { EffectFade } from 'swiper/modules';
+import { gsap } from 'gsap';
 
 import 'swiper/css/effect-fade';
 import { useEventsContext } from '@/contexts/EventsContext';
@@ -35,6 +36,11 @@ const CustomSwiper = ({
   useEffect(() => {
     if (data) {
       setEventsData(page, data);
+      gsap.fromTo(
+        `.${styles.eventItem}`,
+        { opacity: 0 },
+        { opacity: 1, duration: 0.5, ease: 'elastic.inOut' },
+      );
     }
   }, [data, page]);
 

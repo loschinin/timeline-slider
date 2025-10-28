@@ -1,6 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
 
-export const useFlipbookAnimation = (endValue: number | undefined, duration = 50) => {
+export const useFlipbookAnimation = (
+  endValue: number | undefined,
+  duration = 50,
+) => {
   const [currentValue, setCurrentValue] = useState(endValue || 0);
   const previousValueRef = useRef(endValue || 0);
 
