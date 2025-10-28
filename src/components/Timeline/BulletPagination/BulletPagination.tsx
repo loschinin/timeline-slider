@@ -1,13 +1,13 @@
 import React from 'react';
-import styles from './CustomPagination.module.scss';
+import styles from './BulletPagination.module.scss';
 
-interface CustomPaginationProps {
+interface BulletPaginationProps {
   totalPages: number;
   currentPage: number;
   onPageChange: (page: number) => void;
 }
 
-const CustomPagination: React.FC<CustomPaginationProps> = ({
+const BulletPagination: React.FC<BulletPaginationProps> = ({
   totalPages,
   currentPage,
   onPageChange,
@@ -25,4 +25,4 @@ const CustomPagination: React.FC<CustomPaginationProps> = ({
   );
 };
 
-export default CustomPagination;
+export default BulletPagination;

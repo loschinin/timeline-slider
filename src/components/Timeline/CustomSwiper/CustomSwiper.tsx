@@ -12,7 +12,7 @@ import { gsap } from 'gsap';
 import 'swiper/css/effect-fade';
 import { useEventsContext } from '@/contexts/EventsContext';
 import { useEvents } from '@/hooks/useEvents';
-import CustomPagination from '../CustomPagination/CustomPagination';
+import BulletPagination from '../BulletPagination/BulletPagination';
 
 interface CustomSwiperProps {
   page: number;
@@ -84,7 +84,7 @@ const CustomSwiper = ({
         </SwiperSlide>
       ))}
 
-      <CustomPagination
+      <BulletPagination
         totalPages={initialData?.totalPages || 0}
         currentPage={page}
         onPageChange={handlePageChange}
