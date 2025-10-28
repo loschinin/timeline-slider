@@ -5,6 +5,7 @@ import { useState } from 'react';
 import Circle from './Circle';
 import CustomSwiper from './CustomSwiper'; // Import the new CustomSwiper component
 import styles from './Timeline.module.scss';
+import PeriodNavigation from './PeriodNavigation/PeriodNavigation';
 
 const limit = 6; // Number of years per period
 
@@ -18,7 +19,6 @@ const Timeline = () => {
   const startYear = useFlipbookAnimation(currentData?.startYear);
   const endYear = useFlipbookAnimation(currentData?.endYear);
 
-  // These functions are now passed to CustomSwiper
   const handlePeriodSelect = (periodNum: number) => {
     setPage(periodNum);
   };
@@ -48,41 +48,14 @@ const Timeline = () => {
         />
       )}
       <hr className={styles.divider} />
-      <div className={styles.periodNavContainer}>
-        {page} / {initialData?.totalPages}
-        <div className={styles.periodNavButtons}>
-          <button
-            onClick={handlePrevPage}
-            disabled={page === 1}
-            className={styles.navButton}
-          >
-            <svg
-              width="10"
-              height="16"
-              viewBox="0 0 10 16"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M8.5 15L1.5 8L8.5 1" stroke="#3877EE" strokeWidth="2" />
-            </svg>
-          </button>
-          <button
-            onClick={handleNextPage}
-            disabled={!initialData || page === initialData.totalPages}
-            className={styles.navButton}
-          >
-            <svg
-              width="10"
-              height="16"
-              viewBox="0 0 10 16"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M1.5 1L8.5 8L1.5 15" stroke="#3877EE" strokeWidth="2" />
-            </svg>
-          </button>
-        </div>
-      </div>
+      <PeriodNavigation
+        page={page}
+        totalPages={initialData?.totalPages}
+        onPrevPage={handlePrevPage}
+        onNextPage={handleNextPage}
+        isPrevDisabled={page === 1}
+        isNextDisabled={!initialData || page === initialData.totalPages}
+      />
 
       <CustomSwiper
         initialData={initialData}
