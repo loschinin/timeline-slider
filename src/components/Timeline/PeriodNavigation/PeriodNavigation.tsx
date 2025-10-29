@@ -1,6 +1,6 @@
 import React, { Dispatch, SetStateAction } from 'react';
 import styles from './PeriodNavigation.module.scss';
-import ChevronButton from './ChevronButton/ChevronButton';
+import PeriodNavButton from './PeriodNavButton/PeriodNavButton';
 
 interface PeriodNavigationProps {
   page: number;
@@ -30,12 +30,12 @@ const PeriodNavigation: React.FC<PeriodNavigationProps> = ({
         {String(page).padStart(2, '0')}/{String(totalPages).padStart(2, '0')}
       </div>
       <div className={styles.periodNavButtons}>
-        <ChevronButton
+        <PeriodNavButton
           direction={'left'}
           onClick={handlePrevPage}
           disabled={isPrevDisabled}
         />
-        <ChevronButton
+        <PeriodNavButton
           direction={'right'}
           onClick={handleNextPage}
           disabled={isNextDisabled}

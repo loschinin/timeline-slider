@@ -1,8 +1,8 @@
 import React from 'react';
-import styles from './ChevronButton.module.scss';
+import styles from './PeriodNavButton.module.scss';
 import cn from 'classnames';
 
-interface IChevronButtonProps {
+interface IPeriodNavButtonProps {
   direction: 'left' | 'right';
   shadow?: boolean;
   disabled?: boolean;
@@ -10,14 +10,14 @@ interface IChevronButtonProps {
   className?: string;
 }
 
-const ChevronButton: React.FC<IChevronButtonProps> = ({
+const PeriodNavButton: React.FC<IPeriodNavButtonProps> = ({
   direction,
   disabled = false,
   onClick,
   className,
 }) => {
   const buttonClasses = cn(
-    styles.chevronButton,
+    styles.periodNavButton,
     styles[direction],
     {
       [styles.disabled]: disabled,
@@ -32,4 +32,4 @@ const ChevronButton: React.FC<IChevronButtonProps> = ({
   );
 };
 
-export default ChevronButton;
+export default PeriodNavButton;
