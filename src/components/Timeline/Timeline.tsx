@@ -1,10 +1,10 @@
 import { useEvents } from '@/hooks/useEvents';
 import { useState } from 'react';
-import CirclePagination from './CirclePagination/CirclePagination';
+import CirclePagination from './Paginations/CirclePagination/CirclePagination';
 import CustomSwiper from './CustomSwiper/CustomSwiper';
 import styles from './Timeline.module.scss';
 import PeriodNavigation from './PeriodNavigation/PeriodNavigation';
-import BulletPagination from './BulletPagination/BulletPagination';
+import BulletPagination from './Paginations/BulletPagination/BulletPagination';
 import YearsContainer from './YearsContainer/YearsContainer';
 
 const LIMIT = 6; // Количество лет в одном периоде
