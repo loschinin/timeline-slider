@@ -7,12 +7,12 @@ import PeriodNavigation from './PeriodNavigation/PeriodNavigation';
 import BulletPagination from './BulletPagination/BulletPagination';
 import YearsContainer from './YearsContainer/YearsContainer';
 
-const limit = 6; // Number of years per period
+const LIMIT = 6; // Number of years per period
 
 const Timeline = () => {
   const [page, setPage] = useState(1);
 
-  const { data: initialData } = useEvents(1, limit);
+  const { data: initialData } = useEvents(1, LIMIT);
   const initialTotalPages = initialData?.totalPages || 0;
 
   return (
@@ -20,11 +20,11 @@ const Timeline = () => {
       <div className={styles.timelineHeader}>
         <h1 className={styles.title}>Исторические даты</h1>
 
-        <YearsContainer page={page} limit={limit} />
+        <YearsContainer page={page} limit={LIMIT} />
         <CirclePagination
           totalPages={initialTotalPages}
           currentPage={page}
-          limit={limit}
+          limit={LIMIT}
           onPageChange={setPage}
         />
 
@@ -36,7 +36,7 @@ const Timeline = () => {
           totalPages={initialTotalPages}
           setPage={setPage}
         />
-        <CustomSwiper page={page} limit={limit} />
+        <CustomSwiper page={page} limit={LIMIT} />
         <BulletPagination
           totalPages={initialTotalPages}
           currentPage={page}
