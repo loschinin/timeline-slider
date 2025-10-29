@@ -2,12 +2,12 @@
 
 .chevronButton {
   border-radius: 50%;
-  background-color: #ffffff;
+  background-color: var(--color-background-light);
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid #42567a;
+  border: 1px solid var(--color-text-dark);
   padding: 0;
 
   // Base size (large)
@@ -35,14 +35,14 @@
   }
 
   &:hover {
-    background-color: #f0f0f0;
+    background-color: var(--color-white);
   }
 
   &.disabled {
     cursor: default;
     opacity: 0.5;
     &:hover {
-      background-color: #ffffff;
+      background-color: var(--color-white);
     }
   }
 

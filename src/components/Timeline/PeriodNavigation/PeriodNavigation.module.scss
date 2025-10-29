@@ -41,11 +41,11 @@
   }
 
   &:hover {
-    background-color: #fff;
+    background-color: var(--color-white);
   }
   &:disabled {
     cursor: default;
-    border-color: #e1e5ec;
+    border-color: var(--color-border-light);
 
     svg polyline {
       stroke: rgba(66, 86, 122, 0.5);

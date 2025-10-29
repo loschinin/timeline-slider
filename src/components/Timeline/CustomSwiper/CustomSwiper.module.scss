@@ -4,7 +4,7 @@
 %customSwiperButton {
   width: 100px; // Width of the block
   height: 100%;
-  background-color: var(--background);
+  background-color: var(--color-background-light);
   top: 0;
   position: absolute;
   display: flex;
@@ -52,7 +52,7 @@
   span {
     font-size: 25px;
     font-family: var(--font-bebas-neue), serif;
-    color: #3877ee;
+    color: var(--color-iris-mobile);
     line-height: 120%;
   }
 

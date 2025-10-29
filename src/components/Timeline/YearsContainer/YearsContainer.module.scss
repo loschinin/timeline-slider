@@ -10,14 +10,14 @@
 
 .startYear {
   font-size: 200px;
-  color: #3877ee; // Iris 100
+  color: var(--color-iris-desktop);
   line-height: 160px;
   padding: 0 20px;
 }
 
 .endYear {
   font-size: 200px;
-  color: #ef5da8; // Fuschia 100
+  color: var(--color-fuschia);
   line-height: 160px;
   padding: 0 20px;
 }
@@ -32,7 +32,7 @@
   }
 
   .startYear {
-    color: #3877ee;
+    color: var(--color-iris-mobile);
   }
 }
 
