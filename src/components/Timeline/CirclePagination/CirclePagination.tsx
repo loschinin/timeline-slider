@@ -38,17 +38,17 @@ const CirclePagination = ({
           return (
             <div
               key={i}
-              className={`${styles.dot} ${currentPage === i + 1 ? styles.activeDot : ''}`}
-              style={{ left: `${x}px`, top: `${y}px` }}
+              className={`${styles.dot} ${
+                currentPage === i + 1 ? styles.activeDot : ''
+              }`}
+              style={{
+                left: `${x}px`,
+                top: `${y}px`,
+                transform: `rotate(${getAngle(currentPage - 1)}deg)`,
+              }}
               onClick={() => onPageChange(i + 1)}
             >
-              <span
-                style={{
-                  transform: `rotate(${getAngle(currentPage - 1)}deg)`,
-                }}
-              >
-                {i + 1}
-              </span>
+              <span>{i + 1}</span>
             </div>
           );
         })}
