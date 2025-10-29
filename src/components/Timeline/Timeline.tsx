@@ -24,6 +24,7 @@ const Timeline = () => {
         <CirclePagination
           totalPages={initialTotalPages}
           currentPage={page}
+          limit={limit}
           onPageChange={setPage}
         />
 

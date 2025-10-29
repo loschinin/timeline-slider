@@ -1,16 +1,27 @@
+import { useEvents } from '@/hooks/useEvents';
+import CategoryTooltip from './CategoryTooltip/CategoryTooltip';
 import styles from './CirclePagination.module.scss';
+import { findMostFrequentNumber } from '@/utils/arrayUtils';
 
 interface CirclePaginationProps {
   totalPages: number;
   currentPage: number;
+  limit: number;
   onPageChange: (page: number) => void;
 }
 
 const CirclePagination = ({
   totalPages,
   currentPage,
+  limit,
   onPageChange,
 }: CirclePaginationProps) => {
+  const { data: currentData } = useEvents(currentPage, limit);
+
+  const categoryIds =
+    currentData?.events.map((event) => event.categoryId) || [];
+  const currentCategoryId = findMostFrequentNumber(categoryIds) || 0;
+
   const radius = 530 / 2; // The center is half the container's width
 
   const getAngle = (index: number) => {
@@ -35,12 +46,12 @@ const CirclePagination = ({
             radius * Math.sin((angle - 60) * (Math.PI / 180)) -
             dotSize / 2;
 
+          const isDotActive = currentPage === i + 1;
+
           return (
             <div
               key={i}
-              className={`${styles.dot} ${
-                currentPage === i + 1 ? styles.activeDot : ''
-              }`}
+              className={`${styles.dot} ${isDotActive ? styles.activeDot : ''}`}
               style={{
                 left: `${x}px`,
                 top: `${y}px`,
@@ -48,7 +59,14 @@ const CirclePagination = ({
               }}
               onClick={() => onPageChange(i + 1)}
             >
-              <span>{i + 1}</span>
+              <span>
+                {i + 1}
+
+                <CategoryTooltip
+                  categoryId={currentCategoryId}
+                  isVisible={isDotActive}
+                />
+              </span>
             </div>
           );
         })}

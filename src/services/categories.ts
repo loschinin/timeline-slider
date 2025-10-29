@@ -1,7 +1,9 @@
 import { Category } from '@/mocks/categories';
 
-export const fetchCategories = async (): Promise<Category[]> => {
-  const res = await fetch('/api/categories');
-  if (!res.ok) throw new Error('Failed to fetch categories');
+export const getCategoryById = async (
+  id: number,
+): Promise<Category | undefined> => {
+  const res = await fetch(`/api/categories/${id}`);
+  if (!res.ok) return undefined;
   return res.json();
 };
