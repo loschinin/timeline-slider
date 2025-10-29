@@ -1,23 +1,30 @@
-import React from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 import styles from './PeriodNavigation.module.scss';
 
 interface PeriodNavigationProps {
   page: number;
   totalPages?: number;
-  onPrevPage: () => void;
-  onNextPage: () => void;
   isPrevDisabled: boolean;
   isNextDisabled: boolean;
+  setPage: Dispatch<SetStateAction<number>>;
 }
 
 const PeriodNavigation: React.FC<PeriodNavigationProps> = ({
   page,
   totalPages,
-  onPrevPage,
-  onNextPage,
   isPrevDisabled,
   isNextDisabled,
+  setPage,
 }) => {
+  const handlePrevPage = () => {
+    setPage((prevPage) => Math.max(prevPage - 1, 1));
+  };
+
+  const handleNextPage = () => {
+    if (totalPages) {
+      setPage((prevPage) => Math.min(prevPage + 1, totalPages));
+    }
+  };
   return (
     <div className={styles.periodNavContainer}>
       <div className={styles.periodFraction}>
@@ -25,7 +32,7 @@ const PeriodNavigation: React.FC<PeriodNavigationProps> = ({
       </div>
       <div className={styles.periodNavButtons}>
         <button
-          onClick={onPrevPage}
+          onClick={handlePrevPage}
           disabled={isPrevDisabled}
           className={styles.navButton}
         >
@@ -40,7 +47,7 @@ const PeriodNavigation: React.FC<PeriodNavigationProps> = ({
           </svg>
         </button>
         <button
-          onClick={onNextPage}
+          onClick={handleNextPage}
           disabled={isNextDisabled}
           className={styles.navButton}
         >

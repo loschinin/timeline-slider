@@ -8,16 +8,14 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import styles from './CustomSwiper.module.scss';
 
 import { useEvents } from '@/hooks/useEvents';
-import { EventsResponse } from '@/services/events';
 import 'swiper/css/effect-fade';
 
 interface CustomSwiperProps {
   page: number;
   limit: number;
-  setEventsData(page: number, eventsResponse: EventsResponse): void;
 }
 
-const CustomSwiper = ({ page, limit, setEventsData }: CustomSwiperProps) => {
+const CustomSwiper = ({ page, limit }: CustomSwiperProps) => {
   const prevRef = useRef<HTMLDivElement>(null);
   const nextRef = useRef<HTMLDivElement>(null);
 
@@ -25,7 +23,6 @@ const CustomSwiper = ({ page, limit, setEventsData }: CustomSwiperProps) => {
 
   useEffect(() => {
     if (data) {
-      setEventsData(page, data);
       gsap.fromTo(
         `.${styles.eventItem}`,
         { opacity: 0 },

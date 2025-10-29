@@ -1,17 +1,16 @@
 import { useFlipbookAnimation } from '@/hooks/useFlipbookAnimation';
 import styles from './YearsContainer.module.scss';
+import { useEvents } from '@/hooks/useEvents';
 
 interface YearsContainerProps {
-  currentStartYear?: number;
-  currentEndYear?: number;
+  page: number;
+  limit: number;
 }
 
-const YearsContainer = ({
-  currentStartYear,
-  currentEndYear,
-}: YearsContainerProps) => {
-  const startYear = useFlipbookAnimation(currentStartYear);
-  const endYear = useFlipbookAnimation(currentEndYear);
+const YearsContainer = ({ page, limit }: YearsContainerProps) => {
+  const { data: currentData } = useEvents(page, limit);
+  const startYear = useFlipbookAnimation(currentData?.startYear);
+  const endYear = useFlipbookAnimation(currentData?.endYear);
 
   return (
     <div className={styles.yearsContainer}>
