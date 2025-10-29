@@ -14,7 +14,7 @@
 .periodNavButtons {
   display: flex;
   flex-direction: row;
-  gap: 10px;
+  gap: 20px;
 }
 
 .navButton {
@@ -68,5 +68,9 @@
   .navButton {
     width: 25px;
     height: 25px;
+  }
+
+  .periodNavButtons {
+    gap: 8px;
   }
 }
