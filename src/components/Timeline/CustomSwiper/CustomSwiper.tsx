@@ -25,7 +25,7 @@ const CustomSwiper = ({ page, limit }: CustomSwiperProps) => {
       gsap.fromTo(
         `.${styles.eventItem}`,
         { opacity: 0 },
-        { opacity: 1, duration: 0.5, ease: 'elastic.inOut' },
+        { opacity: 1, duration: 1, ease: 'elastic.inOut' },
       );
     }
   }, [data, page]);
