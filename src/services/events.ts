@@ -1,7 +1,7 @@
-import { Event } from '@/mocks/events';
+import { IEvent } from '@/mocks/events';
 
 export interface EventsResponse {
-  events: Event[];
+  events: IEvent[];
   startYear: number;
   endYear: number;
   totalPages: number;

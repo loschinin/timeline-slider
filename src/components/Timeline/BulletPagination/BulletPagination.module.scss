@@ -1,0 +1,32 @@
+@use '@/styles/_mixins.scss' as g;
+
+.paginationContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 20px 0;
+
+  .bullet {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #42567a;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    opacity: 0.4;
+
+    &.active {
+      background-color: #42567a;
+      opacity: 1;
+    }
+  }
+}
+
+@media (min-width: g.$breakpoint-tablet) {
+  .paginationContainer {
+    display: none;
+  }
+}

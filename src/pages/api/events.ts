@@ -1,11 +1,11 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { allEvents, Event } from '@/mocks/events';
+import { allEvents, IEvent } from '@/mocks/events';
 
 export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<
     | {
-        events: Event[];
+        events: IEvent[];
         startYear: number;
         endYear: number;
         totalPages: number;
@@ -18,7 +18,8 @@ export default function handler(
   const limitQuery = req.query.limit;
 
   const pageNum = typeof pageQuery === 'string' ? parseInt(pageQuery, 10) : 1;
-  const limitNum = typeof limitQuery === 'string' ? parseInt(limitQuery, 10) : 6;
+  const limitNum =
+    typeof limitQuery === 'string' ? parseInt(limitQuery, 10) : 6;
 
   const years = allEvents.map((event) => new Date(event.date).getFullYear());
   const minYear = Math.min(...years);
