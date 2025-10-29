@@ -1,18 +1,7 @@
 @use '@/styles/_mixins.scss' as g;
 
-.swiperContainer {
-  width: calc(100% - 156px);
-  position: relative;
-  overflow: visible; // Allow elements to extend beyond the container
-  align-items: center;
-
-  :global(.swiper-button-disabled) {
-    display: none;
-  }
-}
-
-.customSwiperButtonPrev,
-.customSwiperButtonNext {
+// Placeholder for shared button styles
+%customSwiperButton {
   width: 100px; // Width of the block
   height: 100%;
   background-color: var(--background);
@@ -24,7 +13,6 @@
   padding: 0 10px;
 
   &::before {
-    // Round button with chevron
     content: '';
     width: 40px;
     height: 40px;
@@ -41,19 +29,34 @@
   }
 }
 
+.swiperContainer {
+  width: calc(100% - 156px);
+  position: relative;
+  overflow: visible; // Allow elements to extend beyond the container
+  align-items: center;
+
+  :global(.swiper-button-disabled) {
+    display: none;
+  }
+}
+
 .customSwiperButtonPrev {
+  @extend %customSwiperButton;
   left: -100px; // Extend left by its width
   justify-content: flex-end; // Push button to the right of the block
+
   &::before {
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%233877ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>');
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%2342567A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>');
   }
 }
 
 .customSwiperButtonNext {
+  @extend %customSwiperButton;
   right: -100px; // Extend right by its width
   justify-content: flex-start; // Push button to the left of the block
+
   &::before {
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%233877ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>');
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%2342567A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>');
   }
 }
 
@@ -68,7 +71,6 @@
   gap: 15px;
   flex: 0 0 350px;
   padding: 20px 0;
-  // border: 1px solid #eee;
   border-radius: 5px;
 
   span {
