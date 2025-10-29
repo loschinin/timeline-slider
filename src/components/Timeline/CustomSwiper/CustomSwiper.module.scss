@@ -1,6 +1,6 @@
 @use '@/styles/_mixins.scss' as g;
 
-// Placeholder for shared button styles
+// Placeholder for shared button container styles
 %customSwiperButton {
   width: 100px; // Width of the block
   height: 100%;
@@ -11,22 +11,6 @@
   align-items: center;
   z-index: 10; // Ensure it's above other content
   padding: 0 10px;
-
-  &::before {
-    content: '';
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: #ffffff;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); // Shadow
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 20px; // Adjust size of chevron
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-  }
 }
 
 .swiperContainer {
@@ -44,20 +28,12 @@
   @extend %customSwiperButton;
   left: -100px; // Extend left by its width
   justify-content: flex-end; // Push button to the right of the block
-
-  &::before {
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%2342567A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>');
-  }
 }
 
 .customSwiperButtonNext {
   @extend %customSwiperButton;
   right: -100px; // Extend right by its width
   justify-content: flex-start; // Push button to the left of the block
-
-  &::before {
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%2342567A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>');
-  }
 }
 
 .customBullets {

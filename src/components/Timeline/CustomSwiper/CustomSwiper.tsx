@@ -7,6 +7,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import styles from './CustomSwiper.module.scss';
 
 import { useEvents } from '@/hooks/useEvents';
+import SwiperNavButton from './SwiperNavButton/SwiperNavButton';
 
 interface CustomSwiperProps {
   page: number;
@@ -62,7 +63,9 @@ const CustomSwiper = ({ page, limit }: CustomSwiperProps) => {
         },
       }}
     >
-      <div ref={prevRef} className={styles.customSwiperButtonPrev} />
+      <div ref={prevRef} className={styles.customSwiperButtonPrev}>
+        <SwiperNavButton direction="left" />
+      </div>
 
       {data?.events.map((event, i) => (
         <SwiperSlide key={i}>
@@ -73,7 +76,9 @@ const CustomSwiper = ({ page, limit }: CustomSwiperProps) => {
         </SwiperSlide>
       ))}
 
-      <div ref={nextRef} className={styles.customSwiperButtonNext} />
+      <div ref={nextRef} className={styles.customSwiperButtonNext}>
+        <SwiperNavButton direction="right" />
+      </div>
     </Swiper>
   );
 };
