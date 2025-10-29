@@ -1,7 +1,7 @@
 @use '@/styles/_mixins.scss' as g;
 
 .container {
-  position: relative; // для псевдоэлементов
+  position: relative;
   display: flex;
   flex-direction: column;
   width: 100%;
