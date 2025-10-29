@@ -28,13 +28,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
+  &:hover {
+    background-color: #fff;
+  }
   &:disabled {
     cursor: default;
     border-color: #e1e5ec;
 
     svg polyline {
       stroke: rgba(66, 86, 122, 0.5);
+    }
+    &:hover {
+      background-color: transparent;
     }
   }
 }
