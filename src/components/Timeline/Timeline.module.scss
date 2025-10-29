@@ -66,6 +66,12 @@
   gap: 40px;
 }
 
+@media (min-width: g.$breakpoint-mobile) and (max-width: g.$breakpoint-tablet) {
+  .timelineContainer {
+    gap: 30px;
+  }
+}
+
 @media (max-width: g.$breakpoint-mobile) {
   .timelineContainer {
     padding-top: 59px;
