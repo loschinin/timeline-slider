@@ -28,6 +28,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media (min-width: #{g.$breakpoint-mobile}) {
+    svg {
+      width: 32px;
+      height: 30px;
+
+      polyline {
+        stroke-width: 2;
+      }
+    }
+  }
+
   &:hover {
     background-color: #fff;
   }
