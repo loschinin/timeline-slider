@@ -4,18 +4,16 @@ import styles from './PeriodNavigation.module.scss';
 interface PeriodNavigationProps {
   page: number;
   totalPages?: number;
-  isPrevDisabled: boolean;
-  isNextDisabled: boolean;
   setPage: Dispatch<SetStateAction<number>>;
 }
 
 const PeriodNavigation: React.FC<PeriodNavigationProps> = ({
   page,
   totalPages,
-  isPrevDisabled,
-  isNextDisabled,
   setPage,
 }) => {
+  const isPrevDisabled = page === 1;
+  const isNextDisabled = !totalPages || page === totalPages;
   const handlePrevPage = () => {
     setPage((prevPage) => Math.max(prevPage - 1, 1));
   };
@@ -28,7 +26,7 @@ const PeriodNavigation: React.FC<PeriodNavigationProps> = ({
   return (
     <div className={styles.periodNavContainer}>
       <div className={styles.periodFraction}>
-        {page} / {totalPages}
+        {String(page).padStart(2, '0')}/{String(totalPages).padStart(2, '0')}
       </div>
       <div className={styles.periodNavButtons}>
         <button
@@ -39,11 +37,17 @@ const PeriodNavigation: React.FC<PeriodNavigationProps> = ({
           <svg
             width="10"
             height="16"
-            viewBox="0 0 10 16"
+            viewBox="0 0 24 24"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <path d="M8.5 15L1.5 8L8.5 1" stroke="#3877EE" strokeWidth="2" />
+            <polyline
+              points="15 18 9 12 15 6"
+              stroke="#42567A"
+              strokeWidth="4"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
           </svg>
         </button>
         <button
@@ -54,11 +58,17 @@ const PeriodNavigation: React.FC<PeriodNavigationProps> = ({
           <svg
             width="10"
             height="16"
-            viewBox="0 0 10 16"
+            viewBox="0 0 24 24"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <path d="M1.5 1L8.5 8L1.5 15" stroke="#3877EE" strokeWidth="2" />
+            <polyline
+              points="9 18 15 12 9 6"
+              stroke="#42567A"
+              strokeWidth="4"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
           </svg>
         </button>
       </div>

@@ -23,18 +23,33 @@
   border-radius: 50%;
   background-color: transparent;
   border: 1px solid;
-  border-color: #e1e5ec;
+  border-color: rgba(66, 86, 122, 0.5);
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  &:disabled {
+    cursor: not-allowed;
+    border-color: #e1e5ec;
+
+    svg polyline {
+      stroke: rgba(66, 86, 122, 0.5);
+    }
+  }
 }
 
 @media (max-width: g.$breakpoint-tablet) {
   .periodNavContainer {
     position: absolute;
-    bottom: 10px;
-    left: 10px;
+    bottom: 23px;
+    left: 20px;
     padding-left: 0;
+    gap: 8px;
+  }
+
+  .navButton {
+    width: 25px;
+    height: 25px;
   }
 }

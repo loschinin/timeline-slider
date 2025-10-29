@@ -2,12 +2,11 @@ import { gsap } from 'gsap';
 import { useEffect, useRef } from 'react';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import { EffectFade, Navigation } from 'swiper/modules';
+import { FreeMode, Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import styles from './CustomSwiper.module.scss';
 
 import { useEvents } from '@/hooks/useEvents';
-import 'swiper/css/effect-fade';
 
 interface CustomSwiperProps {
   page: number;
@@ -33,15 +32,18 @@ const CustomSwiper = ({ page, limit }: CustomSwiperProps) => {
   return (
     <Swiper
       className={styles.swiperContainer}
-      modules={[Navigation, EffectFade]}
+      grabCursor={true}
+      modules={[Navigation, FreeMode]}
       navigation={{
         enabled: true,
         prevEl: prevRef.current,
         nextEl: nextRef.current,
       }}
+      freeMode={true}
+      spaceBetween={80}
       breakpoints={{
         320: {
-          slidesPerView: 1,
+          slidesPerView: 1.5,
           navigation: {
             enabled: false,
           },

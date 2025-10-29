@@ -4,21 +4,23 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   margin: 20px 0;
 
   .bullet {
-    width: 8px;
-    height: 8px;
+    width: 6px;
+    height: 6px;
     border-radius: 50%;
-    background-color: #ccc;
+    background-color: #42567a;
     border: none;
     padding: 0;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    opacity: 0.4;
 
     &.active {
-      background-color: #3877ee;
+      background-color: #42567a;
+      opacity: 1;
     }
   }
 }

@@ -26,6 +26,9 @@
   .startYear,
   .endYear {
     font-size: 56px;
+    line-height: 72px;
+    padding: 0;
+    gap: 15px;
   }
 
   .startYear {
@@ -37,5 +40,6 @@
   .startYear,
   .endYear {
     font-size: 80px;
+    line-height: 72px;
   }
 }

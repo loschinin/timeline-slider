@@ -17,29 +17,31 @@ const Timeline = () => {
 
   return (
     <div className={styles.timelineContainer}>
-      <h1 className={styles.title}>Исторические даты</h1>
-      <YearsContainer page={page} limit={limit} />
+      <div className={styles.timelineHeader}>
+        <h1 className={styles.title}>Исторические даты</h1>
 
-      <CirclePagination
-        totalPages={initialTotalPages}
-        currentPage={page}
-        onPageChange={setPage}
-      />
+        <YearsContainer page={page} limit={limit} />
+        <CirclePagination
+          totalPages={initialTotalPages}
+          currentPage={page}
+          onPageChange={setPage}
+        />
 
-      <hr className={styles.divider} />
-      <PeriodNavigation
-        page={page}
-        totalPages={initialTotalPages}
-        isPrevDisabled={page === 1}
-        isNextDisabled={!initialTotalPages || page === initialTotalPages}
-        setPage={setPage}
-      />
-      <CustomSwiper page={page} limit={limit} />
-      <BulletPagination
-        totalPages={initialTotalPages}
-        currentPage={page}
-        onPageChange={setPage}
-      />
+        <hr className={styles.divider} />
+      </div>
+      <div className={styles.timelineBody}>
+        <PeriodNavigation
+          page={page}
+          totalPages={initialTotalPages}
+          setPage={setPage}
+        />
+        <CustomSwiper page={page} limit={limit} />
+        <BulletPagination
+          totalPages={initialTotalPages}
+          currentPage={page}
+          onPageChange={setPage}
+        />
+      </div>
     </div>
   );
 };

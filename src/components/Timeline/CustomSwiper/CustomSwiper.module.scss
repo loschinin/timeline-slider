@@ -1,7 +1,7 @@
 @use '@/styles/_mixins.scss' as g;
 
 .swiperContainer {
-  width: calc(100% - 200px);
+  width: calc(100% - 156px);
   position: relative;
   overflow: visible; // Allow elements to extend beyond the container
   align-items: center;
@@ -67,8 +67,8 @@
   min-height: 135px;
   gap: 15px;
   flex: 0 0 350px;
-  padding: 20px;
-  border: 1px solid #eee;
+  padding: 20px 0;
+  // border: 1px solid #eee;
   border-radius: 5px;
 
   span {
@@ -85,14 +85,25 @@
 }
 
 @media (max-width: g.$breakpoint-mobile) {
+  .swiperContainer {
+    width: 100%;
+    :global(.swiper-slide-next) {
+      opacity: 0.5;
+    }
+    min-height: 220px;
+  }
+
   .eventItem {
     max-width: 166px;
     flex: 0 0 280px;
+    padding: 20px 0;
+    gap: 10px;
     span {
       font-size: 16px;
     }
     p {
       font-size: 14px;
+      line-height: 145%;
     }
   }
 
