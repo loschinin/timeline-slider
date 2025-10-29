@@ -2,8 +2,7 @@ import { gsap } from 'gsap';
 import { useEffect, useRef } from 'react';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import { EffectFade, Navigation, Pagination } from 'swiper/modules';
+import { EffectFade, Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import styles from './CustomSwiper.module.scss';
 
@@ -34,7 +33,7 @@ const CustomSwiper = ({ page, limit }: CustomSwiperProps) => {
   return (
     <Swiper
       className={styles.swiperContainer}
-      modules={[Pagination, Navigation, EffectFade]}
+      modules={[Navigation, EffectFade]}
       navigation={{
         enabled: true,
         prevEl: prevRef.current,
@@ -62,7 +61,6 @@ const CustomSwiper = ({ page, limit }: CustomSwiperProps) => {
       }}
     >
       <div ref={prevRef} className={styles.customSwiperButtonPrev} />
-      <div ref={nextRef} className={styles.customSwiperButtonNext} />
 
       {data?.events.map((event, i) => (
         <SwiperSlide key={i}>
@@ -72,6 +70,8 @@ const CustomSwiper = ({ page, limit }: CustomSwiperProps) => {
           </div>
         </SwiperSlide>
       ))}
+
+      <div ref={nextRef} className={styles.customSwiperButtonNext} />
     </Swiper>
   );
 };
