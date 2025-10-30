@@ -1,6 +1,10 @@
 @use '@/styles/_mixins.scss' as g;
 
 .paginationContainer {
+  position: absolute;
+  bottom: 22px;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11,7 +15,7 @@
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background-color: #42567a;
+    background-color: var(--color-text-dark);
     border: none;
     padding: 0;
     cursor: pointer;
@@ -19,7 +23,7 @@
     opacity: 0.4;
 
     &.active {
-      background-color: #42567a;
+      background-color: var(--color-text-dark);
       opacity: 1;
     }
   }

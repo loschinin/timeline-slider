@@ -4,7 +4,7 @@
   padding-left: 78px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 20px;
 
   .periodFraction {
     font-size: 14px;
@@ -14,7 +14,7 @@
 .periodNavButtons {
   display: flex;
   flex-direction: row;
-  gap: 10px;
+  gap: 20px;
 }
 
 .navButton {
@@ -41,11 +41,11 @@
   }
 
   &:hover {
-    background-color: #fff;
+    background-color: var(--color-white);
   }
   &:disabled {
     cursor: default;
-    border-color: #e1e5ec;
+    border-color: var(--color-border-light);
 
     svg polyline {
       stroke: rgba(66, 86, 122, 0.5);
@@ -68,5 +68,9 @@
   .navButton {
     width: 25px;
     height: 25px;
+  }
+
+  .periodNavButtons {
+    gap: 8px;
   }
 }

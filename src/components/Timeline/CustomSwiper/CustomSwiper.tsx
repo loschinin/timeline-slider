@@ -7,6 +7,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import styles from './CustomSwiper.module.scss';
 
 import { useEvents } from '@/hooks/useEvents';
+import SwiperNavButton from './SwiperNavButton/SwiperNavButton';
 
 interface CustomSwiperProps {
   page: number;
@@ -24,7 +25,7 @@ const CustomSwiper = ({ page, limit }: CustomSwiperProps) => {
       gsap.fromTo(
         `.${styles.eventItem}`,
         { opacity: 0 },
-        { opacity: 1, duration: 0.5, ease: 'elastic.inOut' },
+        { opacity: 1, duration: 1, ease: 'elastic.inOut' },
       );
     }
   }, [data, page]);
@@ -47,12 +48,14 @@ const CustomSwiper = ({ page, limit }: CustomSwiperProps) => {
           navigation: {
             enabled: false,
           },
+          spaceBetween: 10,
         },
         430: {
           slidesPerView: 2,
           navigation: {
             enabled: false,
           },
+          spaceBetween: 50,
         },
         1024: {
           slidesPerView: 3,
@@ -62,7 +65,9 @@ const CustomSwiper = ({ page, limit }: CustomSwiperProps) => {
         },
       }}
     >
-      <div ref={prevRef} className={styles.customSwiperButtonPrev} />
+      <div ref={prevRef} className={styles.customSwiperButtonPrev}>
+        <SwiperNavButton direction="left" />
+      </div>
 
       {data?.events.map((event, i) => (
         <SwiperSlide key={i}>
@@ -73,7 +78,9 @@ const CustomSwiper = ({ page, limit }: CustomSwiperProps) => {
         </SwiperSlide>
       ))}
 
-      <div ref={nextRef} className={styles.customSwiperButtonNext} />
+      <div ref={nextRef} className={styles.customSwiperButtonNext}>
+        <SwiperNavButton direction="right" />
+      </div>
     </Swiper>
   );
 };

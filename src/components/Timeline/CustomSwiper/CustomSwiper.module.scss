@@ -1,5 +1,18 @@
 @use '@/styles/_mixins.scss' as g;
 
+// Placeholder for shared button container styles
+%customSwiperButton {
+  width: 100px; // Width of the block
+  height: 100%;
+  background-color: var(--color-background-light);
+  top: 0;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  z-index: 10; // Ensure it's above other content
+  padding: 0 10px;
+}
+
 .swiperContainer {
   width: calc(100% - 156px);
   position: relative;
@@ -11,50 +24,16 @@
   }
 }
 
-.customSwiperButtonPrev,
-.customSwiperButtonNext {
-  width: 100px; // Width of the block
-  height: 100%;
-  background-color: var(--background);
-  top: 0;
-  position: absolute;
-  display: flex;
-  align-items: center;
-  z-index: 10; // Ensure it's above other content
-  padding: 0 10px;
-
-  &::before {
-    // Round button with chevron
-    content: '';
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: #ffffff;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); // Shadow
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 20px; // Adjust size of chevron
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-  }
-}
-
 .customSwiperButtonPrev {
-  left: -100px; // Extend left by its width
+  @extend %customSwiperButton;
+  left: -110px; // Extend left by its width
   justify-content: flex-end; // Push button to the right of the block
-  &::before {
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%233877ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>');
-  }
 }
 
 .customSwiperButtonNext {
-  right: -100px; // Extend right by its width
+  @extend %customSwiperButton;
+  right: -110px; // Extend right by its width
   justify-content: flex-start; // Push button to the left of the block
-  &::before {
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%233877ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>');
-  }
 }
 
 .customBullets {
@@ -67,14 +46,12 @@
   min-height: 135px;
   gap: 15px;
   flex: 0 0 350px;
-  padding: 20px 0;
-  // border: 1px solid #eee;
   border-radius: 5px;
 
   span {
     font-size: 25px;
     font-family: var(--font-bebas-neue), serif;
-    color: #3877ee;
+    color: var(--color-iris-mobile);
     line-height: 120%;
   }
 
@@ -96,8 +73,7 @@
   .eventItem {
     max-width: 166px;
     flex: 0 0 280px;
-    padding: 20px 0;
-    gap: 10px;
+    gap: 12px;
     span {
       font-size: 16px;
     }

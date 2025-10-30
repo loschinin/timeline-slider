@@ -1,7 +1,4 @@
-:root {
-  --background: #f4f5f9;
-  --foreground: #42567a;
-}
+@use 'colors';
 
 html,
 body {
@@ -10,8 +7,8 @@ body {
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
+  color: var(--color-text-dark);
+  background: var(--color-background-light);
   font-family: var(--font-pt-sans), sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
