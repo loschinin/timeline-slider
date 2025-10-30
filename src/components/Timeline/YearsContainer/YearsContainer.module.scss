@@ -4,7 +4,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 50px;
   z-index: 1;
 }
 
@@ -22,7 +22,19 @@
   padding: 0 20px;
 }
 
+@media (min-width: g.$breakpoint-mobile) and (max-width: g.$breakpoint-tablet) {
+  .startYear,
+  .endYear {
+    font-size: 80px;
+    line-height: 72px;
+  }
+}
+
 @media (max-width: g.$breakpoint-mobile) {
+  .yearsContainer {
+    gap: 25px;
+  }
+
   .startYear,
   .endYear {
     font-size: 56px;
@@ -33,13 +45,5 @@
 
   .startYear {
     color: var(--color-iris-mobile);
-  }
-}
-
-@media (min-width: g.$breakpoint-mobile) and (max-width: g.$breakpoint-tablet) {
-  .startYear,
-  .endYear {
-    font-size: 80px;
-    line-height: 72px;
   }
 }

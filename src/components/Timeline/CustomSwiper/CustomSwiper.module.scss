@@ -26,13 +26,13 @@
 
 .customSwiperButtonPrev {
   @extend %customSwiperButton;
-  left: -100px; // Extend left by its width
+  left: -110px; // Extend left by its width
   justify-content: flex-end; // Push button to the right of the block
 }
 
 .customSwiperButtonNext {
   @extend %customSwiperButton;
-  right: -100px; // Extend right by its width
+  right: -110px; // Extend right by its width
   justify-content: flex-start; // Push button to the left of the block
 }
 
@@ -46,7 +46,6 @@
   min-height: 135px;
   gap: 15px;
   flex: 0 0 350px;
-  padding: 20px 0;
   border-radius: 5px;
 
   span {
@@ -74,8 +73,7 @@
   .eventItem {
     max-width: 166px;
     flex: 0 0 280px;
-    padding: 20px 0;
-    gap: 10px;
+    gap: 12px;
     span {
       font-size: 16px;
     }

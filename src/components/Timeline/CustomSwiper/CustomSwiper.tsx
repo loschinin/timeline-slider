@@ -48,12 +48,14 @@ const CustomSwiper = ({ page, limit }: CustomSwiperProps) => {
           navigation: {
             enabled: false,
           },
+          spaceBetween: 10,
         },
         430: {
           slidesPerView: 2,
           navigation: {
             enabled: false,
           },
+          spaceBetween: 50,
         },
         1024: {
           slidesPerView: 3,

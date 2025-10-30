@@ -10,7 +10,7 @@
   border-inline: 1px solid var(--color-border-light);
   overflow: hidden;
   box-sizing: border-box;
-  gap: 160px;
+  gap: 145px;
 
   /* Вертикальная линия */
   &::before {
@@ -37,13 +37,13 @@
   .header {
     display: flex;
     flex-direction: column;
-    gap: 93px;
+    gap: 92px;
 
     .title {
       font-size: 56px;
       font-weight: 700;
       max-width: 353px;
-      line-height: 110%;
+      line-height: 115%;
       border-left: 4.5px solid transparent;
       padding-left: 78px;
       border-image: linear-gradient(
@@ -66,7 +66,7 @@
 .main {
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 58px;
 }
 
 /* ---------- TABLET ---------- */
@@ -82,7 +82,7 @@
   .container {
     padding-top: 59px;
     padding-inline: 20px;
-    gap: 0;
+    gap: 20px;
     min-height: 100dvh;
 
     &::before,
@@ -91,7 +91,7 @@
     }
 
     .header {
-      gap: 56px;
+      gap: 55px;
 
       .title {
         font-size: 20px;
@@ -102,6 +102,7 @@
       }
 
       .divider {
+        margin-top: 5px;
         display: block;
       }
     }
